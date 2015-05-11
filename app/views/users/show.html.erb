@@ -1,0 +1,130 @@
+
+<%= provide(:title, @user.name)%>
+
+
+<div class="row">
+
+  <aside class="col-md-4">
+    <section class="user_info">
+
+
+
+      <h1>
+        <%= gravatar_for @user %>
+       
+      </h1>
+
+    </section>
+
+
+       <div style=" font-size:25px;margin-top:10px; color:black;"> Hello, <%= @user.name %></div>
+
+  <% @user ||= current_user %>
+  <a href="<%= following_user_path(@user)  %>" style= "color:black;">
+ <b>   <div style = "color:black display:inline;float:left;margin-right:10px;">
+      <div style = "margin-top:10px;"><%= @user.following.count %>
+    following</div>
+  </b></a>
+</div>
+
+ <b> <a href="<%= followers_user_path(@user) %>" style= "color:black;">
+     <div style= "margin-top:10px;"> <%= @user.followers.count %>
+    followers</div>
+ </b> </a>
+
+<% unless current_user?(@user) %>
+
+  <% if current_user.following?(@user) %>
+    <%= render 'unfollow' %>
+  <% else %>
+    <%= render 'follow' %>
+  <% end %>
+
+<% end %>
+
+
+
+
+  </aside>
+</div>
+  
+
+<div class = "userMenu">
+	<%= link_to root_path do %>
+<div class= "userBUtton">Home</div>
+<% end %>
+
+
+<%if current_user?(@user)%>
+<%= link_to edit_user_path do%>
+<div class= "userBUtton">Update</div>
+<% end %>
+<% end %>
+
+<%=link_to allMeetings_path do  %>
+<div class= "userBUtton">All meetings</div>
+<% end %>
+
+<%if current_user?(@user)%>
+<%= link_to createMeeting_path do  %>
+<div class= "userBUtton">My meetings</div>
+<% end %>
+<% end %>
+
+
+
+
+<%= link_to users_path do  %>
+<div class= "userBUtton">All users</div>
+<% end %>
+
+<%if current_user?(@user)%>
+<%= link_to meetings_path do  %>
+<div class= "userBUtton">Create meeting</div>
+<% end %>
+<% end %>
+
+<%if current_user?(@user)%>
+
+<%= button_to  @user, method: :delete, :onclick => "return confirm('Are you sure you want to delete your account?')"  do %>
+<div class= "userBUtton" style="width:83px;">DELETE ACCOUNT</div>
+<% end %>
+<%end%>
+
+
+
+
+
+<%if current_user?(@user)%>
+
+<%= link_to logout_path do %>
+<div class= "userBUtton">Log out</div>
+<% end %>
+<% end %>
+
+
+</div>
+
+   <% if @user.meetings.any? %>
+
+<div class = "allMeetings">
+
+      <h3 style = "color:black; margin-left:60px;">Meetings (<%= @user.meetings.count %>)</h3>
+      <ol class="">
+        <%= render :template => "meetings/_meetings" %>
+      </ol>
+
+    <% end %>
+  </div>
+
+
+</div>
+
+
+
+ 
+
+
+  
+
+

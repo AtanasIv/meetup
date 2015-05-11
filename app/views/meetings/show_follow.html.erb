@@ -1,0 +1,19 @@
+<% provide(:title, @title) %>
+
+
+
+      <% if @users.any? %>
+       <h3 style= "color:white"> Following users:</h3>
+          <% @users.each do |user| %>
+
+         <div class="followersGravatars">
+
+        <div >    <%= link_to gravatar_for(user, size: 70), user %></div>
+        <div >   <h3 style="color:white"> User: <%= user.name %></h3></div>
+   </div>
+          <%end%>
+          
+     
+      <% end %>
+
+

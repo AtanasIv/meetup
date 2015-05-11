@@ -1,0 +1,112 @@
+<%provide(:title, "Home")%>
+
+    <title> <%= yield(:title)%> </title>
+<div class= "welcomText">Welcome</div>
+
+   <div class=" jumbotron" style="display:inline; float:left; background-color:transparent">
+
+<%= link_to root_path do %>
+<div class="meetingThumbnail" style = "background-color:#4169E1"> <h3 style= "color:white; margin-top:2px;margin-left:5px;">Home</h3>  <div style = "padding:5px;color:white">Click here and I am hoing to take you Home</div></div>
+<%end %>
+
+
+<% if logged_in? %>
+<%=link_to current_user do %>
+<div class="meetingThumbnail" style = "background-color:#FF6666"> <h3 style= "color:white; margin-top:2px;margin-left:5px;">Log in</h3>  <div style = "padding:5px;color:white">Log in from here</div></div>
+<% end %>
+
+<% else %>
+<%= link_to login_path do %>
+<div class="meetingThumbnail" style = "background-color:#FF6666"> <h3 style= "color:white; margin-top:2px;margin-left:5px;">Log in</h3>  <div style = "padding:5px;color:white">Log in from here</div></div>
+<% end %>
+
+<%	end %>
+
+
+<%= link_to contacts_path do %>
+<div class="meetingThumbnail" style = "background-color:#990099; width: 150px;"> <h3 style= "color:white; margin-top:2px;margin-left:5px;">Contacts</h3>  <div style = "padding:5px;color:white">In case you need to contact me</div></div> 
+<% end %>
+
+<%= link_to about_path do%>
+<div class="meetingThumbnail" style = "background-color:#4169E1"> <h3 style= "color:white; margin-top:2px;margin-left:5px;">About</h3>  <div style = "padding:5px;color:white">Click here and I will tell you about me</div></div> 
+<% end %>
+
+<%if logged_in?%>
+<%= link_to current_user do %>
+<div class="meetingThumbnail" style = "background-color:#330099"> <h3 style= "color:white; margin-top:2px;margin-left:5px;">Profile</h3>  <div class = "divProfile"></div></div>
+<% end %>
+<%else%>
+<%= link_to login_path do %>
+<div class="meetingThumbnail" style = "background-color:#330099"> <h3 style= "color:white; margin-top:2px;margin-left:5px;">Profile</h3>  <div class = "divProfile"></div></div>
+<% end %>
+<% end %>
+
+<%= link_to help_path do %>
+<div class="meetingThumbnail" style = "background-color:#009933; text-alaign:center; width:140px;" > <h3 style= "color:white; margin-top:2px;margin-left:5px;">HELP</h3>  <div style = "padding:5px;color:white"></div></div>
+<%end%>
+
+
+<%= link_to  do %>
+<div class="meetingThumbnail" style = "background-color:#6699FF; text-alaign:center"> <div class="facebookUrl"></div> <div style = "padding:5px;color:white"></div></div>
+<%end%>
+
+
+<%= link_to  do %>
+<div class="meetingThumbnail" style = "background-color:#006666; text-alaign:center; width:210px;"> <div class="twitterUrl"></div>  <div style = "padding:5px;color:white"></div></div>
+<%end%>
+
+
+
+
+
+<%if logged_in?%>
+
+<%= link_to allMeetings_path do %>
+<div class="meetingThumbnail" style = "background-color:#BDB76B; width:180px;"> <h3 style= "color:white; margin-top:2px;margin-left:5px;">Meeting Groups</h3><div style = "padding:5px;color:white">See all the meeting groups here</div></div>
+<% end %>
+<%end %>
+
+<%= link_to signup_path do %>
+<div class="meetingThumbnail" style = "background-color:#DAA520; text-alaign:center; width:220px;" > <h3 style= "color:white; margin-top:15px;margin-left:50px;">SIGN UP</h3> <div style = "padding:5px;color:white" > Sigh up from here </div>  <div style = "padding:5px;color:white"></div></div>
+<%end%>
+
+<% if  logged_in? %>
+
+<%= link_to edit_user_path(current_user) do %>
+<div class="meetingThumbnail" style = "background-color:#FF4500; text-alaign:center;width:150px;"> <h3 style= "color:white; margin-top:2px;margin-left:5px;">Edit my profile </h3>  <div style = "padding:5px;color:white">Click here to change your profile intormation</div></div>
+<% end %>
+
+
+
+<% end %>
+
+<% if logged_in? %>
+
+<%= link_to users_path do %>
+<div class="meetingThumbnail" style = "background-color:#BDB76B; width:200px;"> <h3 style= "color:white; margin-top:2px;margin-left:5px;">All members</h3><div style = "padding:5px;color:white">See all the members here</div></div>
+<% end%>
+
+
+
+<%end %>
+
+<% if logged_in? %>
+
+<%= link_to meetings_path do %>
+<div class="meetingThumbnail" style = "background-color:#BDB76B; width:200px;"> <h3 style= "color:white; margin-top:2px;margin-left:5px;">Create a meeting</h3><div style = "padding:5px;color:white">See all the members here</div></div>
+<% end%>
+<% end%>
+
+
+<% if  logged_in? %>
+
+<%= link_to logout_path do %>
+<div class="meetingThumbnail" style = "background-color:#A00000; text-alaign:center;width:150px;"> <h3 style= "color:white; margin-top:2px;margin-left:5px;">Log out </h3>  <div style = "padding:5px;color:white">See you next time</div></div>
+<% end %>
+<%end%>
+</div>
+
+
+
+
+

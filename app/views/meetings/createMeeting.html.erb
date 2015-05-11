@@ -1,0 +1,27 @@
+ <% provide(:title, 'My meetings') %>
+  <% @meetingss.each do |meeting| %>
+
+   <div class = "singleMeetingInAll">
+  <div style = "margin-left:240px;">  <%= image_tag meeting.picture.url, :width=> 500, :height => 300 if meeting.picture? %></div>
+
+   
+      <div style = "color:black; ">Posted <%= time_ago_in_words(meeting.created_at) %> ago.</div><div style = "">
+
+      <% if current_user?(@user)%>  
+   <%= link_to "delete", meeting, method: :destroy,   data: { confirm: "You sure?" } %>
+   <%end%>
+
+
+</div>
+<b> <div class = "meetingTextAll">Place: <%= meeting.place %></div>
+  <div class = "meetingTextAll">Date: <%= meeting.thedate %></div>
+      <div class = "meetingTextAll">About: <%= meeting.content %></div></d>
+
+
+
+
+
+  </div>
+
+<%end %>
+

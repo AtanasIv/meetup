@@ -1,0 +1,433 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+/* universal */
+
+body {
+  padding-top: 30px;
+  
+}
+
+section {
+  overflow: auto;
+}
+
+textarea {
+  resize: vertical;
+
+}
+
+.center {
+  text-align: center;
+}
+
+.center h1 {
+  margin-bottom: 10px;
+}
+
+
+header a:hover{
+	color:black;
+}
+/* footer */
+
+footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 0px solid #eaeaea;
+  color: black;
+}
+
+
+footer small {
+  float: left;
+}
+
+footer ul {
+  float: right;
+  list-style: none;
+}
+
+footer ul li {
+  float: left;
+  margin-left: 15px;
+}
+
+.facebook{
+
+	width:70px;
+	height:70px;
+	float:left;
+	diplay:inline;
+}
+.twitter{
+
+	width:74px;
+	height:72px;
+	float:left;
+	diplay:inline;
+
+}
+#headerClass{
+width:1200px;
+margin:auto;
+
+}
+
+
+.navButtons{
+margin-right:80px;
+
+float:right;
+
+}
+
+
+/* sidebar */
+
+aside {
+  section.user_info {
+    margin-top: 20px;
+  }
+  section {
+    padding: 10px 0;
+    margin-top: 20px;
+    &:first-child {
+      border: 0;
+      padding-top: 0;
+    }
+    span {
+      display: block;
+      margin-bottom: 3px;
+      line-height: 1;
+    }
+    h1 {
+      font-size: 1.4em;
+      text-align: left;
+      letter-spacing: -1px;
+      margin-bottom: 3px;
+      margin-top: 0px;
+    }
+  }
+}
+
+.gravatar {
+  float: left;
+  margin-right: 10px;
+}
+
+.gravatar_edit {
+  margin-top: 15px;
+}
+
+/* forms */
+
+input, textarea, select, .uneditable-input {
+  border: 1px solid #bbb;
+  width: 100%;
+  margin-bottom: 15px;
+ @include box-sizing(border-box);
+}
+
+input {
+  height: auto !important;
+}
+
+
+
+#error_explanation {
+  color: red;
+
+  ul {
+    color: red;
+    margin: 0 0 30px 0;
+  }
+}
+
+.field_with_errors {
+
+  @extend .has-error;
+
+  .form-control {
+    color: $state-danger-text;
+
+  }
+}
+
+
+
+.meetingThumbnail{
+	width:200px;
+	height:130px;
+	background-color:black;
+float:left;
+margin:20px;
+ transition: all 0.3s ease-in;
+
+}
+.meetingThumbnail:hover {
+    text-shadow: 0 0 10px black; /* replace with whatever color you want */
+    -webkit-box-shadow: 0px 0px 15px 5px rgba(255, 255, 190, .75)  0.5s;
+-moz-box-shadow: 0px 0px 15px 5px rgba(255, 255, 190, .75);
+box-shadow: 0px 0px 15px 5px rgba(255, 255, 190, .75); 
+}
+
+.divProfile{
+	background-image: url("profile.png");
+	width:60px;
+	height:60px;
+float:left;
+margin-left:70px;
+	margin-top:-8px;
+}
+
+.welcomText{
+	font-size:50px;
+	color:white;
+	margin-top:50px;
+	  font-family: "Times New Roman", Times, serif;
+
+}
+
+.facebookUrl{
+	background-image: url("Facebook.png");
+	width:80px;
+	height:80px;
+	margin-left:50px;
+	margin-top:10px;
+}
+
+
+.twitterUrl{
+	background-image: url("twitter12.png");
+	width:80px;
+	height:80px;
+	margin-left:50px;
+	margin-top:10px;
+}
+
+.help{
+	background-color:#CBC5C5;
+	width:1100px;
+	opacity: 0.7;
+
+}
+
+
+.helpDiv{
+	width:300px;
+	height:300px;
+
+	background-color:grey;
+	  border-radius: 25px;
+	  padding:20px;
+	color:black;
+	float:left;
+	font-size:17px;
+	opacity: 0.5;
+	 margin-left:70px;
+	   box-shadow: 10px 10px 5px #888888;
+	       text-align: center;
+}
+.outerDiv{
+margin-top:50px;
+	height:300px;
+	 width:1400px;
+
+}
+
+
+.rightSide{
+	width:200px;
+	display:inline;
+	float:left;
+	font-size:17px;
+	margin-left:100px;
+	margin-top:100px;
+	color:black;
+	font-size:20px;
+}
+.theMap{
+	display:inline;
+	float:left;
+	margin-left:300px;
+	margin-top:100px;
+}
+.contactDiv{
+		background-color:#CBC5C5;
+	width:1100px;
+	height:600px;
+	opacity: 0.7;
+		   box-shadow: 10px 10px 5px #888888;
+		   margin-top:80px;
+}
+
+.userMenu{
+margin-top:50px;
+background-color:white;
+	width:100px;
+	
+	float:left;
+	diplsay:inline;
+}
+
+.allMeetings{
+	diplsay:inline;
+	
+		width:1000px;
+display:inline;
+	margin-top:50px;
+	float:left;
+	margin-left:20px;
+	float:left;
+}
+
+.userBUtton{
+		width:100px;
+		height:40px;
+		margin-top:5px;
+		border-bottom:solid 1px;
+		text-alagn:center;
+		padding-left:5px;
+
+}
+
+.userBUtton:hover {
+    text-shadow: 0 0 10px black; /* replace with whatever color you want */
+    -webkit-box-shadow: 0px 0px 15px 5px rgba(255, 255, 190, .75)  0.5s;
+-moz-box-shadow: 0px 0px 15px 5px rgba(255, 255, 190, .75);
+box-shadow: 0px 0px 15px 5px rgba(255, 255, 190, .75); 
+text-decoration:none;
+}
+
+.singleMeeting{
+		width:300px;
+		height:300px;
+	background-color:transparent;
+		display:inline;
+		float:left;
+		margin-left:20px;
+		margin-bottom:50px;
+		margin-top:20px;
+		
+		
+		
+}
+
+
+
+
+
+.users {
+  list-style: none;
+  margin: 0;
+  background-color:white;
+   border-bottom: 1px solid;
+  li {
+    overflow: auto;
+    padding: 10px 0;
+      color:white;
+   
+  }
+}
+
+.meetingText{
+	font-size:20px;
+	margin-top:205px;
+	float:left;
+	color:white;
+	height:30px;
+	padding:10px;
+text-wrap:normal;
+
+display:inline;
+}
+
+
+
+
+.meetings {
+  list-style: none;
+  padding: 0;
+  li {
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+  }
+  .user {
+    margin-top: 5em;
+    padding-top: 0;
+  }
+  .content {
+    display: block;
+    margin-left: 60px;
+    img {
+      display: block;
+      padding: 5px 0;
+    }
+  }
+  .timestamp {
+    color: $gray-light;
+    display: block;
+    margin-left: 60px;
+  }
+  .gravatar {
+    float: left;
+    margin-right: 10px;
+    margin-top: 5px;
+  }
+}
+
+aside {
+  textarea {
+    height: 100px;
+    margin-bottom: 5px;
+  }
+}
+
+span.picture {
+  margin-top: 10px;
+  input {
+    border: 0;
+  }
+}
+
+
+
+.singleMeeting:hover {
+    text-shadow: 0 0 10px black; /* replace with whatever color you want */
+    -webkit-box-shadow: 0px 0px 15px 5px rgba(255, 255, 190, .75)  0.5s;
+-moz-box-shadow: 0px 0px 15px 5px rgba(255, 255, 190, .75);
+box-shadow: 0px 0px 15px 5px rgba(255, 255, 190, .75); 
+}
+
+
+.singleMeetingInAll{
+margin-top:30px;
+	width:1000px;
+padding:30px;
+	margin-bottom:50px;
+
+	float:left;
+ background: rgba(54, 25, 25, .2);
+}
+	
+.meetingTextAll{
+		font-size:15px;
+		margin-left:10px;
+
+
+	color:black;
+
+
+
+}
+
+.followersGravatars{
+	margin-top:70px;
+
+
+
+
+
+
+}

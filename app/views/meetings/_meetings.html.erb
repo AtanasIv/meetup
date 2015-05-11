@@ -1,0 +1,35 @@
+  <% @meetings.each do |meeting| %>
+
+
+
+
+<%if current_user?(@user)%>
+
+<%= link_to createMeeting_path do %>
+
+   <div class = "singleMeeting" >
+  <div style = "float:left; position:absolute; ; z-index:-1;"> <%= image_tag meeting.picture.url, :width=>300, :height=>300  if meeting.picture? %></div>
+  	  <div class = "meetingText" style = "z-index:-1;"><%= meeting.content.truncate(25, omission: '... (continued)') %></div>
+ 	
+
+    <div style = "color:black; display:inline; float:left; margin-top:40px; margin-left:10px;z-index:1; color: white">Posted <%= time_ago_in_words(meeting.created_at) %> ago.</div>
+
+  </div>
+<%end%>
+
+
+  <% else if current_user != (@user) %>
+  <%= link_to otherUserMeeting_path do %>
+
+   <div class = "singleMeeting" >
+  <div style = "float:left; position:absolute; ; z-index:-1;"> <%= image_tag meeting.picture.url, :width=>300, :height=>300  if meeting.picture? %></div>
+  	  <div class = "meetingText" style = "z-index:-1;"><%= meeting.content.truncate(25, omission: '... (continued)') %></div>
+ 	
+
+    <div style = "color:black; display:inline; float:left; margin-top:40px; margin-left:10px;z-index:1; color: white">Posted <%= time_ago_in_words(meeting.created_at) %> ago.</div>
+
+  </div>
+<%end%>
+<%end%>
+<%end%>
+<%end%>

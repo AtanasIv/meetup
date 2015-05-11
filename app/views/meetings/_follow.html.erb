@@ -1,0 +1,4 @@
+<%= form_for(current_user.passive_relates.build) do |f| %>
+  <div><%= hidden_field_tag :image_id, @user.id %></div>
+  <%= f.submit "Follow", class: "btn btn-primary" %>
+<% end %>

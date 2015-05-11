@@ -1,0 +1,32 @@
+
+
+
+<% provide(:title, 'Sign up') %>
+
+<h1 style="margin-left:290px; color: black;">Sign up</h1>
+<div style="height:30px;"></div>
+
+<div class="row" >
+  <div class="col-md-6 col-md-offset-3">
+
+   <%= form_for(@user) do |f| %>
+ <%= render 'shared/error_messages' %>
+
+	<div style="color:black"><%= f.label :name%></div>
+	<%= f.text_field :name, :placeholder => 'John', class: 'form-control'%>
+
+      <div style= "color:black"><%= f.label :email %></div>
+      <%= f.email_field :email, :placeholder => ' user@example.com', class: 'form-control' %>
+
+     <div style = "color:black"> <%= f.label :password %></div>
+      <%= f.password_field :password, class: 'form-control' %>
+
+     <div style="color: black"> <%= f.label :password_confirmation, "Confirmation" %></div>
+      <%= f.password_field :password_confirmation, class: 'form-control' %>
+
+    <div style="margin-top:15px;">  <%= f.submit "Create my account", class: "btn btn-primary" %></div>
+    <% end %>
+  </div>
+
+</div>
+

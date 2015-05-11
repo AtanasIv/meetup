@@ -1,0 +1,20 @@
+<%= form_for(@meetings) do |f| %>
+  
+  <div class="field">
+  	<div style = "color: white"> <%= f.label :"Information about the meeting" %></div><br>
+    <%= f.text_area :content, placeholder: "Place content here..." %>
+  </div>
+
+    <div class="field">
+  <div style = "color:White;">  <%= f.label :place %></div><br>
+    <%= f.text_field :place %>
+  </div>
+
+  <div class="field">
+ <div style = "color: white">   <%= f.label :thedate %></div><br>
+    <%= f.text_field :thedate %>
+  </div>
+
+  <%= f.submit "Post", class: "btn btn-primary" %>
+
+<% end %>

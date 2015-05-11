@@ -1,0 +1,32 @@
+
+    <header class="navbar navbar-fixed-top " id = "headerClass" >
+
+      <div class="container" >
+
+
+        <nav>
+
+          <ul class="nav navbar-nav navButtons">
+              <% if logged_in? %>
+
+            <li><%= link_to "Home",  root_path %></li>
+            <li><%= link_to "Help",  help_path %></li>
+           <li><%= link_to "Contacts",   contacts_path %></li>
+           <li><%= link_to "Profile", current_user%></li>         
+        <li>   <%= link_to "Log out", logout_path, method: "delete" %></li>
+
+         <% else%>
+           <li><%= link_to "Home",  root_path %></li>
+ <!--           <li><%= link_to "Help",  help_path %></li>
+           <li><%= link_to "Contacts",   contacts_path %></li>
+            <li><%= link_to "Sign up", signup_path%></li>
+            <li><%= link_to "Log in", login_path %></li>  -->
+
+
+        <% end %>
+
+          </ul>
+        </nav>
+      </div>
+    </header>
+

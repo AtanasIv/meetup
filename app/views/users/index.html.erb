@@ -1,0 +1,19 @@
+<% provide(:title, 'All users') %>
+<h1 style = "color:white; margin-left:100px;">All users</h1>
+
+
+<%= will_paginate %>
+<ul class="users" >
+  <% @users.each do |user| %>
+ <li>
+      <%= gravatar_for user, size: 50 %>
+      <%= link_to user.name, user %>
+</li>
+ <%= user.name%> registerd at <%=raw user.created_at %>
+ <div >____________________________</div>
+  <% end %>
+</ul>
+
+<%= will_paginate %>
+
+
