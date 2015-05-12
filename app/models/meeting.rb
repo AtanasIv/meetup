@@ -1,6 +1,8 @@
 class Meeting < ActiveRecord::Base
   belongs_to :user
 
+has_many :relates,  foreign_key: "followed_id", dependent: :destroy
+
   default_scope -> { order(created_at: :desc) }
      validates :user_id, presence: true
       validates :content, presence: true, length: { maximum: 1000 }
@@ -15,11 +17,7 @@ class Meeting < ActiveRecord::Base
 
 
 
- # has_many :passive_relates,         class_name:  "Relate",
-                     #              foreign_key: "user_id",
-                    #               dependent:   :destroy
 
-#has_many :following, through: :passive_relates, source: :user_id
 
 
 validates_format_of :thedate, :with => /\d{2}\/\d{2}\/\d{4}/, :message => "^Date must be in the following format: mm/dd/yyyy"
@@ -30,9 +28,7 @@ def picture_size
 	end
 end
 
-# def followss(other_meeting)
-#     active_relates.create(meeting_id: other_meeting.id)
-#   end
+
 
 #   # Unfollows a user.
 #   def unfollowss(other_meeting)
@@ -53,5 +49,17 @@ end
                      OR user_id = :user_id", user_id: id)
   end
 
+
+def following?(meeting)
+    relates.find_by_user_id(meeting.id)
+  end
+
+  def follow!(meeting)
+    relates.create!(user_id: meeting.id)
+  end
+
+  def unfollow!(meeting)
+    relates.find_by_user_id(meeting.id).destroy
+  end
 
 end

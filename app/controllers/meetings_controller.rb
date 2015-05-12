@@ -1,5 +1,5 @@
 class MeetingsController < ApplicationController
-  before_action :logged_in_user, only: [:create, :destroy, :createMeeting, :user_id]
+  before_action :logged_in_user, only: [:create, :destroy, :createMeeting, :user_id, :meeting_id]
   before_action :correct_user,   only: :destroy
 
 
@@ -7,6 +7,7 @@ class MeetingsController < ApplicationController
     
       def index
     @meetings = current_user.meetings.build if logged_in?
+    @meeting = Meeting.find(params[:id])
 
     end
 
@@ -59,8 +60,10 @@ end
 
 
 def allMeetings
-  @meetings = Meeting.all
+ @meetings = Meeting.all
 
+#  @meeting = Meeting.find(params[:id])
+ #   @user = User.find(@meeting.user_id)
 end
 
 
@@ -77,13 +80,18 @@ end
   end
 
 
+def following
+    @title = "Following"
+    @user  = User.find(params[:id])
 
+    render 'show_follow'
+  end
 
 
   private
 
     def meeting_params
-      params.require(:meeting).permit(:content, :place, :thedate, :picture)
+      params.require(:meeting).permit(:content, :place, :thedate, :picture, :user_id)
     end
 
  def correct_user

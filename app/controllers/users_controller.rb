@@ -19,7 +19,7 @@ def show
   @user = User.find(params[:id])
   @users = User.all
   @meetings = @user.meetings.paginate(page: params[:page])
-
+  @followed_meetings = @user.followed_meetings.paginate(page: params[:page])
 
 end
 

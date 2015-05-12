@@ -15,6 +15,7 @@ get 'help' => 'static_pages#help'
 get 'contacts' => 'static_pages#contacts'
 get 'about' => 'static_pages#about'
 get 'signup' => 'users#new'
+get 'newmeeting' => 'meetings#new'
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
   get 'logout'  => 'sessions#destroy'
@@ -33,7 +34,7 @@ get 'signup' => 'users#new'
 
    resources :users do
     member do
-      get :user_id, :meeting_id
+         get :following
     end
   end
 

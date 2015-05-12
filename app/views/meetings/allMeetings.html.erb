@@ -9,15 +9,16 @@
  <div style = "color:black; margin-left:10px;margin-bottom:20px;">Posted <%= time_ago_in_words(meeting.created_at) %> ago.</div>
 
 
-  	<%= link_to meeting.user do%><b>	<div class = "meetingTextAll" >Posted by: <%= meeting.user.name %></div><% end %>
+  	<%= link_to meeting.user do%><b>	<div class = "meetingTextAll" >Posted by: <%= %></div><% end %>
       <div class = "meetingTextAll" >Place: <%= meeting.place %></div>
     <div style="">  <div class = "meetingTextAll">Date: <%= meeting.thedate %></div>
     <div class = "meetingTextAll">About: <%= meeting.content %></div></b>
 
 
-<% unless current_user?(@user) %>
 
-  <% if current_user.following?(@user) %>
+<% unless current_user?@user%>
+
+ <% if current_user.following?(meeting) %>
     <%= render 'unfollow' %>
   <% else %>
     <%= render 'follow' %>
@@ -26,8 +27,8 @@
 <% end %>
 
 </div>
+</div>
 
 
 <%end %>
-
 	

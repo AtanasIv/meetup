@@ -1,5 +1,4 @@
-<%= form_for(current_user.passive_relates.find_by(user_id: @user.id),
-             html: { method: :delete },
-             remote: true) do |f| %>
-  <%= f.submit "Unfollowss", class: "btn" %>
+<%= form_for(current_user.relates.find_by_followed_id(@meeting),
+             html: { method: :delete }) do |f| %>
+  <%= f.submit "LEAVE", class: "btn btn-large" %>
 <% end %>

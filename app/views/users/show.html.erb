@@ -79,7 +79,7 @@
 <% end %>
 
 <%if current_user?(@user)%>
-<%= link_to meetings_path do  %>
+<%= link_to newmeeting_path do  %>
 <div class= "userBUtton">Create meeting</div>
 <% end %>
 <% end %>
@@ -121,7 +121,12 @@
 </div>
 
 
-
+  <% if @user.followed_meetings.any? %>
+      <h3>Followed Recipes (<%= @user.followed_meetings.count %>)</h3>
+      <ol class="recipes">
+        <%= render @followed_meetings %>
+      </ol>
+    <% end %>
  
 
 

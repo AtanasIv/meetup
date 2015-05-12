@@ -1,1 +1,21 @@
-ATANAS	
+<%= form_for(@meetings) do |f| %>
+<%= render 'shared/meeting_error_messages', object: f.object %>
+
+  <div class="field">
+  	<div style = "color: white"> <%= f.label :"Information about the meeting" %></div><br>
+    <%= f.text_area :content, placeholder: "About information..." %>
+  </div>
+
+    <div class="field">
+  <div style = "color:White;">  <%= f.label :place %></div><br>
+    <%= f.text_field :place,  class: 'form-control'%>
+  </div>
+
+  <div class="field">
+ <div style = "color: white">   <%= f.label :thedate %></div><br>
+    <%= f.text_field :thedate, placeholder: "Example: 01/01/2015" %>
+  </div>
+ <%= f.file_field :picture,  class: 'form-control' %>
+  <%= f.submit "Create", class: "btn btn-primary" %>
+
+<% end %>

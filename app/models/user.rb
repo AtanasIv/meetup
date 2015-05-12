@@ -3,8 +3,6 @@ has_many :meetings, dependent: :destroy
 
 
 
-has_many :relates,  :class_name => 'Relate'
-has_many :meetings, :through => :relates, :class_name => 'Relate'
 
 	attr_accessor :remember_token
  before_save { self.email = email.downcase }
@@ -23,20 +21,19 @@ has_many :meetings, :through => :relates, :class_name => 'Relate'
                                    foreign_key: "followed_id",
                                    dependent:   :destroy
 
-  #has_many :following, through: :active_relationships,  source: :followed
-  #has_many :followers, through: :passive_relationships, source: :follower
+  has_many :following, through: :active_relationships,  source: :followed
+  has_many :followers, through: :passive_relationships, source: :follower
 
 
 validates_format_of :name, :with => /\A[^0-9`!@#\$%\^&*+_=]+\z/
 
 
 
+has_many :relates, foreign_key: "follower_id", dependent: :destroy
+has_many :followed_meetings, through: :relates, source: :followed
 
-  #has_many :active_relates,         class_name:  "Relate",
-                             #      foreign_key: "meeting_id",
-                               #    dependent:   :destroy
 
-#has_many :, through: :active_relates, source: :meeting_id
+
 
    def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
@@ -82,22 +79,17 @@ validates_format_of :name, :with => /\A[^0-9`!@#\$%\^&*+_=]+\z/
     following.include?(other_user)
   end
 
- def followss(other_meeting)
-    active_relates.create(meeting_id: other_meeting.id)
+
+  def following?(meeting)
+    relates.find_by_followed_id(meeting.id)
   end
 
-  # Unfollows a user.
-  def unfollowss(other_meeting)
-    active_relates.find_by(meeting_id: other_meeting.id).destroy
+  def follow!(meeting)
+    relates.create!(followed_id: meeting.id)
   end
 
-  # Returns true if the current user is following the other user.
-  def followingss?(other_meeting)
-    meetings.include?(other_meeting)
+  def unfollow!(meeting)
+    relates.find_by_followed_id(meeting.id).destroy
   end
-
-
-
-
 
 end

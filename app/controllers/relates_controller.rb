@@ -1,19 +1,21 @@
 class RelatesController < ApplicationController
-#before_action :logged_in_user
 
- # def create
- #    user = User.find(params[:id])
- #    meeting = user.meeting.find(params[:user_id])
- #    current_user.followss(meeting)
- #    redirect_to user
- #  end
+	 def create
+  
+     @meeting = Meeting.find(params[:relate][:followed_id])
+   current_user.follow!(@meeting)
+    redirect_to @meeting
 
- #  def destroy
- #    user = Relate.find(params[:id]).followed
- #    meeting = user.meeting.find(params[:id])
- #    current_user.unfollowss(meeting)
- #    redirect_to user
- #  end
+   
 
+  end
 
+  def destroy
+    @meeting = Relate.find(params[:id]).followed
+    current_user.unfollow!(@meeting)
+     respond_to do |format|
+      format.html { redirect_to @meeting }
+      format.js
+    end
+  end
 end
