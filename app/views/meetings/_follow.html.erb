@@ -1,4 +1,4 @@
-<%= form_for(current_user.relates.build(followed_id: @meeting)) do |f| %>
+<%= form_for(current_user.relates.build(followed_id: @meeting.id)) do |f| %>
   <div><%= f.hidden_field :followed_id %></div>
   <%= f.submit "JOIN", class: "btn btn-large btn-primary" %>
 <% end %>

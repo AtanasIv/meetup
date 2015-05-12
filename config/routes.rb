@@ -32,7 +32,7 @@ get 'newmeeting' => 'meetings#new'
     end
   end
 
-   resources :users do
+   resources :meetings do
     member do
          get :following
     end

@@ -28,12 +28,8 @@ has_many :meetings, dependent: :destroy
 validates_format_of :name, :with => /\A[^0-9`!@#\$%\^&*+_=]+\z/
 
 
-
 has_many :relates, foreign_key: "follower_id", dependent: :destroy
 has_many :followed_meetings, through: :relates, source: :followed
-
-
-
 
    def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
@@ -78,7 +74,6 @@ has_many :followed_meetings, through: :relates, source: :followed
   def following?(other_user)
     following.include?(other_user)
   end
-
 
   def following?(meeting)
     relates.find_by_followed_id(meeting.id)

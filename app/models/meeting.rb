@@ -49,17 +49,4 @@ end
                      OR user_id = :user_id", user_id: id)
   end
 
-
-def following?(meeting)
-    relates.find_by_user_id(meeting.id)
-  end
-
-  def follow!(meeting)
-    relates.create!(user_id: meeting.id)
-  end
-
-  def unfollow!(meeting)
-    relates.find_by_user_id(meeting.id).destroy
-  end
-
 end

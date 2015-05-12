@@ -7,7 +7,7 @@ class MeetingsController < ApplicationController
     
       def index
     @meetings = current_user.meetings.build if logged_in?
-    @meeting = Meeting.find(params[:id])
+    @meeting = Meeting.paginate(page: params[:page])
 
     end
 
@@ -60,10 +60,9 @@ end
 
 
 def allMeetings
- @meetings = Meeting.all
+  @meetings = Meeting.all
+    
 
-#  @meeting = Meeting.find(params[:id])
- #   @user = User.find(@meeting.user_id)
 end
 
 
@@ -80,10 +79,11 @@ end
   end
 
 
-def following
+ def following
     @title = "Following"
-    @user  = User.find(params[:id])
-
+     @user = User.all
+    @meeting  = Meeting.find(params[:id])
+    @users = @user.following(@meeting).paginate(page: params[:page])
     render 'show_follow'
   end
 
@@ -91,7 +91,7 @@ def following
   private
 
     def meeting_params
-      params.require(:meeting).permit(:content, :place, :thedate, :picture, :user_id)
+      params.require(:meeting).permit(:content, :place, :thedate, :picture)
     end
 
  def correct_user
