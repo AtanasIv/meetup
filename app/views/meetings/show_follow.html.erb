@@ -2,8 +2,8 @@
 
 
 
-      <% if @users.any? %>
-       <h3 style= "color:white"> Following users:</h3>
+      <% if @meeting.user_followers.any? %>
+       <h3 style= "color:white"> Going users:</h3>
           <% @users.each do |user| %>
 
          <div class="followersGravatars">

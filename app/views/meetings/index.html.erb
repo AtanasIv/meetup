@@ -1,21 +1,35 @@
-<%= form_for(@meetings) do |f| %>
-<%= render 'shared/meeting_error_messages', object: f.object %>
+ <% @meetings.each do |meeting| %>
 
-  <div class="field">
-  	<div style = "color: white"> <%= f.label :"Information about the meeting" %></div><br>
-    <%= f.text_area :content, placeholder: "About information..." %>
-  </div>
 
-    <div class="field">
-  <div style = "color:White;">  <%= f.label :place %></div><br>
-    <%= f.text_field :place,  class: 'form-control'%>
-  </div>
+   <div class = "singleMeetingInAll">
+     <div style = "margin-left:240px;">  <%= image_tag meeting.picture.url, :width=> 500, :height => 300 if meeting.picture? %></div>
+ <div style = "color:black; margin-left:10px;margin-bottom:20px;">Posted <%= time_ago_in_words(meeting.created_at) %> ago.</div>
 
-  <div class="field">
- <div style = "color: white">   <%= f.label :thedate %></div><br>
-    <%= f.text_field :thedate, placeholder: "Example: 01/01/2015" %>
-  </div>
- <%= f.file_field :picture,  class: 'form-control' %>
-  <%= f.submit "Create", class: "btn btn-primary" %>
+
+    <%= link_to meeting.user do%><b>  <div class = "meetingTextAll" >Posted by: <%=meeting.user %></div><% end %>
+      <div class = "meetingTextAll" >Place: <%= meeting.place %></div>
+    <div style="">  <div class = "meetingTextAll">Date: <%= meeting.thedate %></div>
+    <div class = "meetingTextAll">About: <%= meeting.content %></div></b>
+
+ <b> <a href="<%= following_meeting_path(meeting) %>" style= "color:black;">
+     <div style= "margin-top:10px;"> <%= @users %>
+    followers</div>
+ </b> </a>
+
+
+
+
+</div>
+</div>
+
+
+<%end %>
+  <% unless current_user?@user%>
+
+ <% if current_user.following?(@meeting) %>
+    <%= render 'unfollow' %>
+  <% else %>
+    <%= render 'follow' %>
+  <% end %>
 
 <% end %>

@@ -34,15 +34,13 @@
 
 <% unless current_user?(@user) %>
 
-  <% if current_user.following?(@user) %>
+  <% if current_user.following?(@user)  %>
     <%= render 'unfollow' %>
   <% else %>
     <%= render 'follow' %>
   <% end %>
 
 <% end %>
-
-
 
 
   </aside>
@@ -70,7 +68,6 @@
 <div class= "userBUtton">My meetings</div>
 <% end %>
 <% end %>
-
 
 
 
@@ -121,15 +118,7 @@
 </div>
 
 
-  <% if @user.followed_meetings.any? %>
-      <h3>Followed Recipes (<%= @user.followed_meetings.count %>)</h3>
-      <ol class="recipes">
-        <%= render @followed_meetings %>
-      </ol>
-    <% end %>
- 
 
 
   
-
 

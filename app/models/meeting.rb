@@ -2,6 +2,9 @@ class Meeting < ActiveRecord::Base
   belongs_to :user
 
 has_many :relates,  foreign_key: "followed_id", dependent: :destroy
+has_many :user_followers, through: :relates, source: :follower 
+
+
 
   default_scope -> { order(created_at: :desc) }
      validates :user_id, presence: true
@@ -9,15 +12,6 @@ has_many :relates,  foreign_key: "followed_id", dependent: :destroy
       validates :place, presence: true, length: { maximum: 50 }
       validates :thedate, presence: true, length: { maximum: 10 }
        mount_uploader :picture, PictureUploader
-
-
-#has_many :relates,  :class_name => 'Relate'
-#has_many :users,  :through => :relates, :class_name => 'Relate'
-
-
-
-
-
 
 
 validates_format_of :thedate, :with => /\d{2}\/\d{2}\/\d{4}/, :message => "^Date must be in the following format: mm/dd/yyyy"
@@ -47,6 +41,10 @@ end
                      WHERE  follower_id = :user_id"
     Meeting.where("user_id IN (#{following_ids})
                      OR user_id = :user_id", user_id: id)
+  end
+
+ def following?(meeting)
+    relates.find_by_followed_id(meeting.id)
   end
 
 end

@@ -1,18 +1,21 @@
 class MeetingsController < ApplicationController
-  before_action :logged_in_user, only: [:create, :destroy, :createMeeting, :user_id, :meeting_id]
+  before_action :logged_in_user, only: [:create, :destroy, :createMeeting, :following]
   before_action :correct_user,   only: :destroy
 
 
 
     
       def index
-    @meetings = current_user.meetings.build if logged_in?
-    @meeting = Meeting.paginate(page: params[:page])
+     @user = User.all
+      @meetings = @user.find(params[:user_id])
+  
+  
 
     end
 
   def show
-  
+         @user  = User.find(params[:id])
+    @users = @user.following.paginate(page: params[:page])
         @meetings = Meeting.find(params[:id])
         if  @meetings.destroy
              flash[:success] = "Meeting deleted"
@@ -60,8 +63,7 @@ end
 
 
 def allMeetings
-  @meetings = Meeting.all
-    
+ @meetings = Meeting.all
 
 end
 
@@ -81,17 +83,21 @@ end
 
  def following
     @title = "Following"
-     @user = User.all
-    @meeting  = Meeting.find(params[:id])
-    @users = @user.following(@meeting).paginate(page: params[:page])
+    @user  = User.find(params[:id])
+    @meeting = Meeting.find(params[:id])
+    
+    @users = @meeting.user_followers.paginate(page: params[:page])
     render 'show_follow'
   end
 
 
+
+  
+
   private
 
     def meeting_params
-      params.require(:meeting).permit(:content, :place, :thedate, :picture)
+      params.require(:meeting).permit(:content, :place, :thedate, :picture, :user_id)
     end
 
  def correct_user
