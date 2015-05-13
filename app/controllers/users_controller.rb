@@ -82,7 +82,7 @@ def current_user
 
 
 
- def following
+   def following
     @title = "Following"
     @user  = User.find(params[:id])
     @users = @user.following.paginate(page: params[:page])
@@ -95,7 +95,6 @@ def current_user
     @users = @user.followers.paginate(page: params[:page])
     render 'show_follow'
   end
-
 
 
 

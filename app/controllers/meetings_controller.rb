@@ -14,8 +14,7 @@ class MeetingsController < ApplicationController
     end
 
   def show
-         @user  = User.find(params[:id])
-    @users = @user.following.paginate(page: params[:page])
+      
         @meetings = Meeting.find(params[:id])
         if  @meetings.destroy
              flash[:success] = "Meeting deleted"
@@ -23,6 +22,7 @@ class MeetingsController < ApplicationController
      
    redirect_to  current_user
 
+    @users = current_user.following.paginate(page: params[:page])
 end
   
 
@@ -83,9 +83,9 @@ end
 
  def following
     @title = "Following"
-    @user  = User.find(params[:id])
+
     @meeting = Meeting.find(params[:id])
-    
+ 
     @users = @meeting.user_followers.paginate(page: params[:page])
     render 'show_follow'
   end

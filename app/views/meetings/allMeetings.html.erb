@@ -10,7 +10,7 @@
 
 
   	<%= link_to meeting.user do%><b>
-    	<div class = "meetingTextAll" >Posted by: <%=meeting.user.name%></div>
+    	<div class = "meetingTextAll" >Posted by: <%=  meeting.user.name%></div>
     <% end %>
 
 
@@ -26,8 +26,11 @@
   </b></a>
 </div>
 
+
+
+
   <% unless current_user?meeting.user%>
-<% if current_user.following?(meeting) %>
+<% if current_user.followings?(meeting) %>
     <%= form_for(current_user.relates.find_by_followed_id(meeting),
               html: { method: :delete }) do |f| %>
    <%= f.submit "LEAVE", class: "btn btn-large" %>

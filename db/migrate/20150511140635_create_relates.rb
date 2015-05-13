@@ -6,8 +6,8 @@ class CreateRelates < ActiveRecord::Migration
 
       t.timestamps null: false
     end
-       add_index :relates, :follower_id
-    add_index :relates, :followed_id
-    add_index :relates, [:follower_id, :followed_id], unique: true
+      add_index :relates, :followed_id
+      add_index :relates, :follower_id
+      add_index :relates, [:follower_id, :followed_id], unique: true
   end
 end

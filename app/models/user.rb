@@ -13,7 +13,7 @@ has_many :meetings, dependent: :destroy
                     uniqueness: { case_sensitive: false }
   has_secure_password
   validates :password, length: { minimum: 6 }, allow_blank: true
-  
+
   has_many :active_relationships,  class_name:  "Relationship",
                                    foreign_key: "follower_id",
                                    dependent:   :destroy
@@ -76,17 +76,20 @@ has_many :followed_meetings, through: :relates, source: :followed
 
 
 
-
-  def following?(meeting)
-    relates.find_by_followed_id(meeting.id)
+  def followings?(meeting)
+relates.find_by_followed_id(meeting.id)
   end
 
-  def follow!(meeting)
-    relates.create!(followed_id: meeting.id)
-  end
+def follows!(meeting)
+relates.create!(followed_id: meeting.id)
+end
 
-  def unfollow!(meeting)
-    relates.find_by_followed_id(meeting.id).destroy
-  end
+
+
+def unfollows!(meeting)
+relates.find_by_followed_id(meeting.id).destroy
+
+end
+
 
 end

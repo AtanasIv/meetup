@@ -1,9 +1,8 @@
 class Meeting < ActiveRecord::Base
   belongs_to :user
 
-has_many :relates,  foreign_key: "followed_id", dependent: :destroy
-has_many :user_followers, through: :relates, source: :follower 
-
+has_many :relates, foreign_key: "followed_id", dependent: :destroy
+has_many :user_followers, through: :relates, source: :follower
 
 
   default_scope -> { order(created_at: :desc) }
