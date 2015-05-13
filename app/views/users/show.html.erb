@@ -116,20 +116,20 @@
   </div>
 <% end %>
 
-<div class = "allMeetings">
+<div class = "">
 
   <% if @user.followed_meetings.any? %>
 
      <h3 style = "color:black; margin-left:90px;">Followed meeting(<%= @user.followed_meetings.count %>)</h3>
+
      <% @user.followed_meetings.each do |meeting| %>
-<div class = "singleMeeting"style = "margin-left:90px;">
+
+  <div class = "singleMeeting"style = "margin-left:90px;">
   <div style = "float:left; position:absolute; ; z-index:-1;"> <%= image_tag meeting.picture.url, :width=>300, :height=>300  if meeting.picture? %></div>
-      <div class = "meetingText" style = "z-index:-1;"><%= meeting.content.truncate(25, omission: '... (continued)') %></div>
-  
-
-    <div style = "color:black; display:inline; float:left; margin-top:40px; margin-left:10px;z-index:1; color: white">Posted <%= time_ago_in_words(meeting.created_at) %> ago.</div>
-
+  <div class = "meetingText" style = "z-index:-1;"><%= meeting.content.truncate(25, omission: '... (continued)') %></div>
+  <div style = "color:black; display:inline; float:left; margin-top:40px; margin-left:10px;z-index:1; color: white">Posted <%= time_ago_in_words(meeting.created_at) %> ago.</div>
   </div>
+
 </div>
 
 <%end%>

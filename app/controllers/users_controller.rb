@@ -77,7 +77,6 @@ def current_user
 
  def createMeeting
      @user = User.find(params[:id])
-   
   end
 
 
